@@ -1,0 +1,12 @@
+:root {
+  --color-bistre: #362417;
+  --color-cinereous: #92817a;
+  --color-dutch-white: #f1dabf;
+  --color-white: #fffbff;
+  --color-rich-black: #04030f;
+
+  --fontWeight-nunito-light: 300;
+  --fontWeight-nunito-regular: 400;
+  --fontWeight-nunito-bold: 700;
+  --fontFamily-nunito: "Nunito", sans-serif;
+}

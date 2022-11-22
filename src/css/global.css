@@ -1,0 +1,35 @@
+@import "@font/nunito/regular";
+@import "./vars.css";
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: var(--fontFamily-nunito);
+  background-color: var(--color-white);
+  color: var(--color-bistre);
+}
+
+.title {
+  color: var(--color-bistre);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 80%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  width: stretch;
+}

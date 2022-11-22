@@ -1,0 +1,38 @@
+@import "../../css/vars.css";
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dual_ring {
+  display: inline-block;
+  margin-top: 40px;
+  width: 80px;
+  height: 80px;
+}
+
+.dual_ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--color-dutch-white);
+  border-color: var(--color-dutch-white) transparent var(--color-dutch-white)
+    transparent;
+  animation: dual_ring 1.2s linear infinite;
+}
+
+@keyframes dual_ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
