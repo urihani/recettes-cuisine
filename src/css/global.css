@@ -11,9 +11,7 @@ body {
   color: var(--color-bistre);
 }
 
-.title {
-  color: var(--color-bistre);
-}
+/* Positionnement */
 
 .container {
   display: flex;
@@ -32,4 +30,75 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 20px;
   width: stretch;
+}
+
+/* Texte */
+
+.title {
+  color: var(--color-bistre);
+}
+
+/* Boutons */
+
+button {
+  border: none;
+  border-radius: 2px;
+  padding: 12px 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--color-white);
+  background-color: var(--color-blue);
+  box-shadow: 0 0 4px var(--color-grey);
+  outline: none;
+}
+
+/* Effets */
+
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.ripple:hover {
+  background: var(--color-secondary)
+    radial-gradient(circle, transparent 1%, var(--color-secondary) 1%)
+    center/15000%;
+}
+
+.ripple:active {
+  background-color: var(--color-light-secondary);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.ripple_danger {
+  background-color: rgb(179, 34, 34);
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.ripple_danger:hover {
+  background: rgb(193, 67, 67)
+    radial-gradient(circle, transparent 1%, rgb(193, 67, 67) 1%) center/15000%;
+}
+
+.ripple_danger:active {
+  background-color: rgb(179, 34, 34);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/* Utils */
+
+.danger {
+  background-color: brown;
+}
+
+.ml_1 {
+  margin-left: 8px;
+}
+
+.ml_2 {
+  margin-left: 16px;
 }

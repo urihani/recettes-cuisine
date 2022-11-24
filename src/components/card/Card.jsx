@@ -10,8 +10,8 @@ const Card = (props) => {
       <h2 className={styles.title}>{props.title}</h2>
       <img className={styles.image} src={props.thumbnail} alt={props.strTags} />
       <div className={styles.text_container}>
-        <span className={styles.origin}>{props.origin}</span>
-        <p className={styles.text}>{props.recipe.slice(0, 300)}</p>
+        <small className={styles.origin}>{props.origin}</small>
+        <p className={styles.text}>{props.recipe.slice(0, 300)} ...</p>
       </div>
     </article>
   );

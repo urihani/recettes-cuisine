@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav_link {
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 10px;
+  color: var(--color-cinereous);
+  font-size: large;
+  font-weight: var(--fontWeight-nunito-bold);
+}
+
+.nav_link:hover {
+  color: var(--color-dutch-white);
+}
