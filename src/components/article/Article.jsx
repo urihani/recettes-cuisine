@@ -2,14 +2,24 @@ import axios from "axios";
 import React from "react";
 import Loader from "../loader/Loader";
 import styles from "./Article.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Article = (props) => {
   const [isInEditMode, setIsInEditMode] = useState(false);
   const [isInRemoveMode, setisInRemoveMode] = useState(false);
+  const [content, setContent] = useState("");
 
-  async function remove() {
+  useEffect(() => {
+    setContent(props.content);
+  }, [props.content]);
+
+  function remove() {
     props.removeArticle(props.id);
+  }
+
+  function update() {
+    props.updateArticle(props.id, props.author, content);
+    setIsInEditMode(false);
   }
 
   function renderContent() {
@@ -17,19 +27,24 @@ const Article = (props) => {
       return (
         <article className={styles.card}>
           <div className={styles.header}>
-            <input placeholder="Auteur"></input>
-            <pre></pre>
+            <h2>{props.author}</h2>
+            <pre>{props.date}</pre>
           </div>
-          <textarea value={props.content} cols="30" rows="10"></textarea>
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            cols="30"
+            rows="10"
+          ></textarea>
           <div className={styles.button_group}>
-            <button className="ripple" onClick={() => setIsInEditMode(false)}>
-              Annuler
+            <button className="ripple" onClick={update}>
+              Modifier
             </button>
             <button
               className="ripple_danger ml_2"
-              onClick={() => setisInRemoveMode(true)}
+              onClick={() => setIsInEditMode(false)}
             >
-              X
+              Annuler
             </button>
           </div>
         </article>
@@ -40,15 +55,17 @@ const Article = (props) => {
       return (
         <article className={styles.card}>
           <h3>Voulez vous vraiment supprimer cet article?</h3>
-          <button className="ripple" onClick={remove}>
-            Oui
-          </button>
-          <button
-            className="ripple_danger ml_2"
-            onClick={() => setisInRemoveMode(false)}
-          >
-            Annuler
-          </button>
+          <div className={styles.button_group}>
+            <button className="ripple" onClick={remove}>
+              Oui
+            </button>
+            <button
+              className="ripple_danger ml_2"
+              onClick={() => setisInRemoveMode(false)}
+            >
+              Annuler
+            </button>
+          </div>
         </article>
       );
     }

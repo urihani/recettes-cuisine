@@ -12,8 +12,8 @@ const Blog = () => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
+  const [, setContent] = useState("");
   const [error, setError] = useState(false);
-  const [isInEditMode, setIsInEditMode] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -31,7 +31,7 @@ const Blog = () => {
       setData(res.data);
       setLoading(false);
     } catch (e) {
-      console.log(e);
+      console.error(e);
       setLoading(false);
     }
   }
@@ -55,13 +55,30 @@ const Blog = () => {
         setMessage("");
       }
     } catch (e) {
-      alert(e);
+      console.error(e);
     }
   }
 
   const removeArticle = async (id) => {
-    await axios.delete(`http://localhost:3003/articles/${id}`);
-    setData(data.filter((item) => item.id !== id));
+    try {
+      await axios.delete(`http://localhost:3003/articles/${id}`);
+      setData(data.filter((item) => item.id !== id));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const updateArticle = async (id, author, content) => {
+    try {
+      const res = await axios.put(`http://localhost:3003/articles/${id}`, {
+        author: author,
+        content: content,
+        date: Date.now(),
+      });
+      fetchData();
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -88,6 +105,7 @@ const Blog = () => {
                 date={"Posté le " + convertDate(article.date)}
                 content={article.content}
                 removeArticle={removeArticle}
+                updateArticle={updateArticle}
               ></Article>
             ))
           : null}
