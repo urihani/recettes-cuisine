@@ -37,7 +37,11 @@ const Recettes = () => {
   return (
     <div className="container">
       <h1 className="title">Recettes de cuisine</h1>
-      <TextInput value={searchField} onChange={handleChange} />
+      <TextInput
+        placeholder="Recherche (en anglais)"
+        value={searchField}
+        onChange={handleChange}
+      />
 
       <main className="grid">
         {data.length !== 0

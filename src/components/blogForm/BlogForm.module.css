@@ -1,0 +1,15 @@
+.edit_form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.edit_text {
+  margin-bottom: 16px;
+  padding: 8px;
+}
+
+.error {
+  color: var(--color-danger);
+  margin-bottom: 16px;
+}
